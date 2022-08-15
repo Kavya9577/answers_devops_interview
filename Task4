@@ -5,4 +5,4 @@ RUN apt-get update
 RUN apt-get -d -y install nginx 
 RUN apt-get -y install nginx
 ENTRYPOINT ["tail", "-f", "/dev/null"]
-CMD [“echo”,”Bookboon test”]
+# CMD [“echo”,”Bookboon test”]
