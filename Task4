@@ -1,5 +1,8 @@
+# TASK 4
+# docker build -t bookboon/task4:v1 .
 FROM ubuntu 
 RUN apt-get update 
-RUN apt-get install –y nginx 
+RUN apt-get -d -y install nginx 
+RUN apt-get -y install nginx
 ENTRYPOINT ["tail", "-f", "/dev/null"]
-# CMD [“echo”,”Bookboon test”]
+CMD [“echo”,”Bookboon test”]
