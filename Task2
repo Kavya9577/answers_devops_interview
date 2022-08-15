@@ -10,7 +10,7 @@ data:
     play.i18n.langs = ["en"]
   application.conf: |
     secret = "ki:s:[[@=Ag?QI`W2jMwkY:eqvrJ]JqoJyi2axj3ZvOv^/KavOT4ViJSv?6YY4[N"
-    data.path = "/var/db/cerebro"
+    data.path = "/var/db/cerebro/cerebro.db"
     pidfile.path=/dev/null
     rest.history.size = 50 // defaults to 50 if not specified
 ---
