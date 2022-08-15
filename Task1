@@ -1,14 +1,28 @@
-apiVersion: v1
-kind: PersistentVolume
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: task-pv-volume
-  labels:
-    type: local
+  name: nginx-deployment
 spec:
-  storageClassName: manual
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/etc/nginx/conf.d/"
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.16.1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /etc/nginx/conf.d/
+            name: fixed-host-volumes
+      volumes:
+      - name: fixed-host-volumes
+        hostPath:
+          path: /etc/nginx/conf.d/
+          type: Directory # This should be kept as "DirectoryOrCreate" to create the directory if doesn't exist
+  
